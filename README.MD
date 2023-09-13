@@ -2,6 +2,8 @@
 
 Plugin to monitor states from zustand.
 
+![](./docs/badge-statements.svg) ![](./docs/badge-functions.svg) ![](./docs/badge-lines.svg) ![](./docs/badge-branches.svg)
+
 How install a project:
 
 ```
@@ -18,16 +20,16 @@ Go to file "Reactotron.config.js" or your config reactotron from project, is sim
 ```ts
 Reactotron.setAsyncStorageHandler(AsyncStorage) // AsyncStorage would either come from `react-native` or `@react-native-community/async-storage` depending on where you get it from
   .configure({
-    name: "Name Project",
+    name: 'Name Project'
   }) // controls connection & communication settings
   .useReactNative() // add all built-in react native plugins
   .use(
     //add this line 🙌
     reactotronZustand({
       stores: [
-        { name: "app", zustand: useApp },
-        { name: "authentication", zustand: useAuth },
-      ],
+        { name: 'app', zustand: useApp },
+        { name: 'authentication', zustand: useAuth }
+      ]
     })
   ) // plus some custom made plugin.
   .connect(); // let's connect!
