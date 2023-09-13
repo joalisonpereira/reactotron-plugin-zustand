@@ -39,10 +39,10 @@ name = name of store, this is show on reactotron
 
 zustand = your store
 
-<img width="727" alt="Captura de Tela 2023-06-22 às 23 59 47" src="https://github.com/joalisonpereira/reactotron-zustand-plugin/docs/tron1">
+<img width="727" alt="Captura de Tela 2023-06-22 às 23 59 47" src="https://raw.githubusercontent.com/joalisonpereira/reactotron-plugin-zustand/master/docs/tron1.png">
 
 Don't forget to add the observers!
 
-<img width="602" alt="Captura de Tela 2023-06-23 às 00 09 08" src="https://github.com/joalisonpereira/reactotron-zustand-plugin/docs/tron2">
+<img width="602" alt="Captura de Tela 2023-06-23 às 00 09 08" src="https://raw.githubusercontent.com/joalisonpereira/reactotron-plugin-zustand/master/docs/tron2.png">
 
 You can watch states by individual or all state using: "\*", "root" , "all"
