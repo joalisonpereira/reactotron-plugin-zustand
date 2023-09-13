@@ -1,6 +1,6 @@
 {
   "name": "reactotron-plugin-zustand",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Plugin to monitor states from zustand",
   "main": "./dist/index.js",
   "scripts": {
