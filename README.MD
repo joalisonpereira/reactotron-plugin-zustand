@@ -31,10 +31,10 @@ Reactotron.setAsyncStorageHandler(AsyncStorage) // AsyncStorage would either com
 
 ## Usage
 
-Install <a href="https://github.com/infinitered/reactotron/blob/master/docs/installing.md" target="_blank">Reactotron Client</a> and add your store observer, using the example `"auth"` or all states using: `"*", "root" , "all"`.
+Install [Reactotron Client]("https://github.com/infinitered/reactotron/blob/master/docs/installing.md") and add your store observer, using the example `"auth"` or all states using: `"*", "root" , "all"`.
 
 <img width="602" alt="Captura de Tela 2023-06-23 às 00 09 08" src="https://raw.githubusercontent.com/joalisonpereira/reactotron-plugin-zustand/master/docs/tron2.png">
 
 ## Credits
 
-Thanks to [aylonmuramatsu](https://github.com/aylonmuramatsu/), for creating the original code base.
+Thanks to [aylonmuramatsu](https://github.com/aylonmuramatsu), for creating the original code base.
