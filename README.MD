@@ -12,7 +12,7 @@ npm i -D reactotron-plugin-zustand
 
 ## Setup
 
-Go to file "Reactotron.config.js" or your config reactotron from project, is similar to this file:
+Go to file "Reactotron.config.ts" or your config reactotron from project, is similar to this file:
 
 ```ts
 Reactotron.setAsyncStorageHandler(AsyncStorage) // AsyncStorage would either come from `react-native` or `@react-native-community/async-storage` depending on where you get it from
@@ -31,7 +31,7 @@ Reactotron.setAsyncStorageHandler(AsyncStorage) // AsyncStorage would either com
 
 ## Usage
 
-Install [Reactotron Client]("https://github.com/infinitered/reactotron/blob/master/docs/installing.md") and add your store observer, using the example `"auth"` or all states using: `"*", "root" , "all"`.
+Install [Reactotron Client](https://github.com/infinitered/reactotron/blob/master/docs/installing.md) and add your store observer, using the example `"auth"` or all states using: `"*", "root" , "all"`.
 
 <img width="602" alt="Captura de Tela 2023-06-23 às 00 09 08" src="https://raw.githubusercontent.com/joalisonpereira/reactotron-plugin-zustand/master/docs/tron2.png">
 
