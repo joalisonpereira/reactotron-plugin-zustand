@@ -23,7 +23,7 @@ Reactotron.setAsyncStorageHandler(AsyncStorage) // AsyncStorage would either com
   .use(
     //add this line 🙌
     reactotronZustand({
-      stores: [{ name: 'authentication', zustand: useAuth }]
+      stores: [{ name: 'auth', zustand: useAuth }]
     })
   ) // plus some custom made plugin.
   .connect(); // let's connect!
@@ -31,6 +31,6 @@ Reactotron.setAsyncStorageHandler(AsyncStorage) // AsyncStorage would either com
 
 ## Usage
 
-Install <a href="https://github.com/infinitered/reactotron/blob/master/docs/installing.md" target="_blank">Reactotron Client</a> and add your store observers or all state using: `"\*", "root" , "all"`.
+Install <a href="https://github.com/infinitered/reactotron/blob/master/docs/installing.md" target="_blank">Reactotron Client</a> and add your store observer, by the example `"auth"` or all state using: `"*", "root" , "all"`.
 
 <img width="602" alt="Captura de Tela 2023-06-23 às 00 09 08" src="https://raw.githubusercontent.com/joalisonpereira/reactotron-plugin-zustand/master/docs/tron2.png">
