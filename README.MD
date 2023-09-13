@@ -1,4 +1,4 @@
-# reactotron-plugin
+# reactotron-plugin-zustand
 
 Plugin to monitor states from zustand.
 
@@ -7,7 +7,7 @@ Plugin to monitor states from zustand.
 ## Install
 
 ```bash
-npm i -D reactotron-zustand
+npm i -D reactotron-plugin-zustand
 ```
 
 ## Setup
