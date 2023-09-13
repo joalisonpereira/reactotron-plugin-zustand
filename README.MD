@@ -4,17 +4,14 @@ Plugin to monitor states from zustand.
 
 ![](./docs/badge-statements.svg) ![](./docs/badge-functions.svg) ![](./docs/badge-lines.svg) ![](./docs/badge-branches.svg)
 
-How install a project:
+## Install
 
-```
-npm i reactotron-zustand-plugin --save
-
-or
-
-yarn add reactotron-zustand-plugin
+```bash
+npm i -D reactotron-zustand
 ```
 
-How use?
+## Install
+
 Go to file "Reactotron.config.js" or your config reactotron from project, is similar to this file:
 
 ```ts
