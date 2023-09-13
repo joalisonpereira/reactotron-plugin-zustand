@@ -10,7 +10,7 @@ Plugin to monitor states from zustand.
 npm i -D reactotron-zustand
 ```
 
-## Install
+## Setup
 
 Go to file "Reactotron.config.js" or your config reactotron from project, is similar to this file:
 
