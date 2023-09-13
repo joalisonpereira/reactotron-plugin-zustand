@@ -1,4 +1,3 @@
-// import Reactotron from 'reactotron-react-native';
 import { type StoreApi } from 'zustand';
 import plugin from './plugin';
 
@@ -9,13 +8,6 @@ export interface PluginConfig {
   }>;
 }
 
-export default function reactotronZustand(config: PluginConfig) {
+export default function reactotronPluginZustand(config: PluginConfig) {
   return plugin(config);
 }
-
-// Reactotron.configure({
-//   name: 'Name Project'
-// })
-//   .useReactNative()
-//   .use((p) => {})
-//   .connect();

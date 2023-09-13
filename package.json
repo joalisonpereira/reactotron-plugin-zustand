@@ -2,7 +2,7 @@
   "name": "reactotron-plugin-zustand",
   "version": "1.0.1",
   "description": "Plugin to monitor states from zustand",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "tsx watch src",
@@ -13,6 +13,9 @@
     "check-types": "tsc --noemit",
     "prepare": "husky install"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/joalisonpereira/reactotron-plugin-zustand/"
