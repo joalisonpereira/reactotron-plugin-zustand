@@ -15,26 +15,21 @@ npm i -D reactotron-plugin-zustand
 Go to file "Reactotron.config.ts" or your config reactotron from project, is similar to this file:
 
 ```ts
-Reactotron.setAsyncStorageHandler(AsyncStorage) // AsyncStorage would either come from `react-native` or `@react-native-community/async-storage` depending on where you get it from
-  .configure({
-    name: 'Name Project'
-  }) // controls connection & communication settings
-  .useReactNative() // add all built-in react native plugins
+Reactotron.configure({ name: 'Project name' })
   .use(
     //add this line 🙌
-    reactotronZustand({
-      stores: [{ name: 'auth', zustand: useAuth }]
-    })
-  ) // plus some custom made plugin.
-  .connect(); // let's connect!
+    reactotronZustand({ stores: [{ name: 'auth', store: useAuth }] })
+  )
+  .connect();
 ```
+
+## Updates V2
+
+- Enable snapshot functions
+- Code improvements
 
 ## Usage
 
-Install [Reactotron Client](https://github.com/infinitered/reactotron/blob/master/docs/installing.md) and add your store observer, using the example `"auth"` or all states using: `"*", "root" , "all"`.
+Install [Reactotron Client](https://github.com/infinitered/reactotron/tree/master) and add your store observer, using the example `"auth"` or all states using: `"*", "root" or "all"`.
 
 <img width="602" alt="Captura de Tela 2023-06-23 às 00 09 08" src="https://raw.githubusercontent.com/joalisonpereira/reactotron-plugin-zustand/master/docs/tron2.png">
-
-## Credits
-
-Thanks to [aylonmuramatsu](https://github.com/aylonmuramatsu), for creating the original code base.

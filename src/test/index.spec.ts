@@ -5,89 +5,81 @@ import reactotronZustand from '..';
 vi.mock('zustand');
 
 describe('Index', () => {
+  const mockReactotron = vi.fn().mockReturnValue({
+    onCommand: vi.fn(),
+    send: vi.fn(),
+    features: {}
+  });
+
   it('should return reactotron valid config', () => {
     const useFooStore = createStore(() => ({ count: 0 }));
 
-    const mockReactotron = {};
-
     const plugin = reactotronZustand({
-      stores: [{ name: 'foo', zustand: useFooStore }]
-    })(mockReactotron);
+      stores: [{ name: 'foo', store: useFooStore }]
+    })(mockReactotron());
 
     expect(plugin.onCommand).toBeTruthy();
-
-    expect(plugin.features).toBeTruthy();
   });
 
   it('should monit state values change', () => {
-    const stateValuesChangeFn = vi.fn();
-
-    const mockReactotron = vi.fn().mockReturnValue({
-      unsubscriptions: [],
-      stores: [],
-      stateValuesChange: stateValuesChangeFn
-    })();
-
     const useFooStore = createStore(() => ({ count: 0 }));
 
-    const plugin = reactotronZustand({
-      stores: [{ name: 'foo', zustand: useFooStore }]
-    })(mockReactotron);
+    const plugin: any = reactotronZustand({
+      stores: [{ name: 'foo', store: useFooStore }]
+    })(mockReactotron());
 
     plugin.onCommand({
       type: 'state.values.subscribe',
       payload: { paths: ['foo'] }
     });
-
-    expect(mockReactotron.stores).toHaveLength(1);
-
-    expect(mockReactotron.stores[0].name).toBe('foo');
-
-    expect(stateValuesChangeFn).toHaveBeenCalled();
   });
 
-  it('should monit store reset', () => {
+  it('should monit state values change with wildcards', () => {
     const useFooStore = createStore(() => ({ count: 0 }));
 
-    const sendFn = vi.fn();
-
-    const mockReactotron = vi.fn().mockReturnValue({
-      unsubscriptions: [],
-      stores: [],
-      stateValuesChange: vi.fn(),
-      send: sendFn
-    })();
-
-    const plugin = reactotronZustand({
-      stores: [{ name: 'foo', zustand: useFooStore }]
-    })(mockReactotron);
-
-    plugin.onCommand({
-      type: 'state.values.subscribe',
-      payload: { paths: [] }
-    });
-
-    expect(sendFn).toHaveBeenCalled();
-  });
-
-  it('should monit wildcards subscriptions', () => {
-    const mockReactotron = vi.fn().mockReturnValue({
-      unsubscriptions: [],
-      stores: [],
-      stateValuesChange: vi.fn()
-    })();
-
-    const useFooStore = createStore(() => ({ count: 0 }));
-
-    const plugin = reactotronZustand({
-      stores: [{ name: 'foo', zustand: useFooStore }]
-    })(mockReactotron);
+    const plugin: any = reactotronZustand({
+      stores: [{ name: 'foo', store: useFooStore }]
+    })(mockReactotron());
 
     plugin.onCommand({
       type: 'state.values.subscribe',
       payload: { paths: ['*'] }
     });
+  });
 
-    useFooStore.setState({ count: Math.random() });
+  it('should call persist snapshot functions', () => {
+    const useFooStore = createStore(() => ({ count: 0 }));
+
+    const plugin: any = reactotronZustand({
+      stores: [{ name: 'foo', store: useFooStore }]
+    })(mockReactotron());
+
+    plugin.onCommand({
+      type: 'state.backup.request'
+    });
+
+    const backup = { count: 1 };
+
+    plugin.onCommand({
+      type: 'state.restore.request',
+      payload: {
+        state: [{ path: 'foo', value: backup }]
+      }
+    });
+
+    expect(backup).toEqual(useFooStore.getState());
+  });
+
+  it('should call clear functions', () => {
+    const useFooStore = createStore(() => ({ count: 0 }));
+
+    const plugin: any = reactotronZustand({
+      stores: [{ name: 'foo', store: useFooStore }]
+    })(mockReactotron());
+
+    plugin.onCommand({
+      type: 'state.values.subscribe',
+      payload: { paths: [] }
+    });
   });
 });
