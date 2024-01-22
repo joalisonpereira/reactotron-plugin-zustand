@@ -23,13 +23,13 @@ Reactotron.configure({ name: 'Project name' })
   .connect();
 ```
 
+## Usage
+
+Install [Reactotron Client](https://github.com/infinitered/reactotron/tree/master) and add your store observer, using the example `"auth"` or all states using: `"*"`.
+
+<img width="602" alt="Captura de Tela 2023-06-23 às 00 09 08" src="https://raw.githubusercontent.com/joalisonpereira/reactotron-plugin-zustand/master/docs/tron2.png">
+
 ## Updates V2
 
 - Enable snapshot functions
 - Code improvements
-
-## Usage
-
-Install [Reactotron Client](https://github.com/infinitered/reactotron/tree/master) and add your store observer, using the example `"auth"` or all states using: `"*", "root" or "all"`.
-
-<img width="602" alt="Captura de Tela 2023-06-23 às 00 09 08" src="https://raw.githubusercontent.com/joalisonpereira/reactotron-plugin-zustand/master/docs/tron2.png">

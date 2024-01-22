@@ -22,7 +22,7 @@ export interface Change {
   value: unknown;
 }
 
-export const WILDCARDS = ['', '*', 'all', 'root'];
+export const WILDCARDS = ['*'];
 
 export default function reactotronPluginZustand({
   stores
