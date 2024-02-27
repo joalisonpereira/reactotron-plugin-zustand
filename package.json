@@ -1,6 +1,6 @@
 {
   "name": "reactotron-plugin-zustand",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Plugin to monitor states from zustand",
   "main": "./dist/index.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "test:coverage": "vitest run --coverage && jest-coverage-badges -o --output './docs'",
     "lint": "npx eslint src --fix",
     "check-types": "tsc --noemit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepublish": "npm run build"
   },
   "files": [
     "dist"
