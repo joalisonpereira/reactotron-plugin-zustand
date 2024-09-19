@@ -58,7 +58,10 @@ export default function reactotronPluginZustand({
           reactotron.send('state.backup.response', {
             state: stores.map((item) => ({
               path: item.name,
-              value: item.store.getState()
+              value: omitFunctionRecursively(
+                item.store.getState(),
+                true // always backup without functions
+              )
             }))
           });
         }
