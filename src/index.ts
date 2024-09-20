@@ -9,6 +9,7 @@ export interface PluginConfig {
     name: string;
     store: StoreApi<unknown>;
   }>;
+  omitFunctionKeys?: boolean;
 }
 
 export interface Subscription {
@@ -24,8 +25,28 @@ export interface Change {
 
 export const WILDCARDS = ['*'];
 
+function omitFunctionRecursively<T>(input: T, enable: boolean): T {
+  if (!enable) return input;
+  if (input && typeof input === 'object') {
+    const ret: any = {};
+    Object.entries(input).forEach(([k, v]) => {
+      if (typeof v !== 'function') {
+        ret[k] = omitFunctionRecursively(v, enable);
+      }
+    });
+    return ret as T;
+  } else if (Array.isArray(input)) {
+    return input
+      .filter((t) => typeof t !== 'function')
+      .map((t) => omitFunctionRecursively(t, enable)) as T;
+  } else {
+    return input;
+  }
+}
+
 export default function reactotronPluginZustand({
-  stores
+  stores,
+  omitFunctionKeys = true
 }: PluginConfig): Parameters<ReactotronCore['use']>[number] {
   return (reactotron: ReactotronCore) => {
     let subscriptions: Subscription[] = [];
@@ -34,17 +55,14 @@ export default function reactotronPluginZustand({
       onCommand: (command) => {
         // Backup state
         if (command?.type === 'state.backup.request') {
-          const withoutFnState = JSON.parse(
-            JSON.stringify(
-              stores.map((item) => ({
-                path: item.name,
-                value: item.store.getState()
-              }))
-            )
-          );
-
           reactotron.send('state.backup.response', {
-            state: withoutFnState
+            state: stores.map((item) => ({
+              path: item.name,
+              value: omitFunctionRecursively(
+                item.store.getState(),
+                true // always backup without functions
+              )
+            }))
           });
         }
 
@@ -83,7 +101,10 @@ export default function reactotronPluginZustand({
           const getTronState = () =>
             subStores.map((item) => ({
               path: item.name,
-              value: item.store.getState()
+              value: omitFunctionRecursively(
+                item.store.getState(),
+                omitFunctionKeys
+              )
             }));
 
           // Initialize clean state
@@ -100,7 +121,10 @@ export default function reactotronPluginZustand({
                 );
 
                 reactotron.send('state.values.change', {
-                  changes: newState.concat({ path: item.name, value: changes })
+                  changes: newState.concat({
+                    path: item.name,
+                    value: omitFunctionRecursively(changes, omitFunctionKeys)
+                  })
                 });
               })
             };
