@@ -1,6 +1,7 @@
 import { type StoreApi } from 'zustand';
 import type Reactotron from 'reactotron-react-js';
 import deepmerge from 'deepmerge';
+import { omitFunctionRecursively } from './utils';
 
 export type ReactotronCore = ReturnType<typeof Reactotron.configure>;
 
@@ -25,28 +26,9 @@ export interface Change {
 
 export const WILDCARDS = ['*'];
 
-function omitFunctionRecursively<T>(input: T, enable: boolean): T {
-  if (!enable) return input;
-  if (input && typeof input === 'object') {
-    const ret: any = {};
-    Object.entries(input).forEach(([k, v]) => {
-      if (typeof v !== 'function') {
-        ret[k] = omitFunctionRecursively(v, enable);
-      }
-    });
-    return ret as T;
-  } else if (Array.isArray(input)) {
-    return input
-      .filter((t) => typeof t !== 'function')
-      .map((t) => omitFunctionRecursively(t, enable)) as T;
-  } else {
-    return input;
-  }
-}
-
 export default function reactotronPluginZustand({
   stores,
-  omitFunctionKeys = true
+  omitFunctionKeys = false
 }: PluginConfig): Parameters<ReactotronCore['use']>[number] {
   return (reactotron: ReactotronCore) => {
     let subscriptions: Subscription[] = [];
