@@ -18,7 +18,7 @@ Reactotron.configure({
           store: useOtherCounter
         }
       ],
-      omitFunctionKeys: true //default is false
+      omitFunctionKeys: true
     })
   )
   .connect();
