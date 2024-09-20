@@ -22,7 +22,7 @@ Reactotron.configure({ name: 'Project name' })
     //add this line 🙌
     reactotronZustand({
       stores: [{ name: 'auth', store: useAuth }]
-      omitFunctionKeys: false
+      omitFunctionKeys: true
     })
   )
   .connect();
