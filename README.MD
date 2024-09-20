@@ -28,8 +28,6 @@ Reactotron.configure({ name: 'Project name' })
   .connect();
 ```
 
-### Options
-
 | Option             | Description                                                      |
 | ------------------ | ---------------------------------------------------------------- |
 | `stores`           | List of stores to be monitored by the Reactotron Zustand plugin. |
