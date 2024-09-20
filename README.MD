@@ -22,18 +22,18 @@ Reactotron.configure({ name: 'Project name' })
     //add this line 🙌
     reactotronZustand({
       stores: [{ name: 'auth', store: useAuth }],
-      omitFunctionKeys: true //default is false
+      omitFunctionKeys: true
     })
   )
   .connect();
 ```
 
-| Option             | Description                                                      |
-| ------------------ | ---------------------------------------------------------------- |
-| `stores`           | List of stores to be monitored by the Reactotron Zustand plugin. |
-| `stores[].name`    | Name of the store to be monitored.                               |
-| `stores[].store`   | Reference to the store hook to be monitored.                     |
-| `omitFunctionKeys` | Omit state functions (default is false).                         |
+| Option             | Description                                                      | Default |
+| ------------------ | ---------------------------------------------------------------- | ------- |
+| `stores`           | List of stores to be monitored by the Reactotron Zustand plugin. |         |
+| `stores[].name`    | Name of the store to be monitored.                               |         |
+| `stores[].store`   | Reference to the store hook to be monitored.                     |         |
+| `omitFunctionKeys` | Omit state functions (default is false).                         | false   |
 
 ## Usage
 
