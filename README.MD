@@ -21,7 +21,7 @@ Reactotron.configure({ name: 'Project name' })
   .use(
     //add this line 🙌
     reactotronZustand({
-      stores: [{ name: 'auth', store: useAuth }]
+      stores: [{ name: 'auth', store: useAuth }],
       omitFunctionKeys: true
     })
   )
