@@ -1,13 +1,13 @@
 import Reactotron from 'reactotron-react-js';
-import reactotronZustandPlugin from '../../src/index';
 import { useCounter } from './store/useCounter';
 import { useOtherCounter } from './store/useOtherCounter';
+import reactotronPluginZustand from '../../src';
 
 Reactotron.configure({
-  name: 'Reactotron Zustand Plugin'
+  name: 'Reactotron Plugin Zustand'
 })
   .use(
-    reactotronZustandPlugin({
+    reactotronPluginZustand({
       stores: [
         {
           name: 'useCounter',

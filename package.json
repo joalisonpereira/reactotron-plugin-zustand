@@ -1,6 +1,6 @@
 {
   "name": "reactotron-plugin-zustand",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Plugin to monitor states from zustand",
   "main": "./dist/index.js",
   "scripts": {
@@ -52,6 +52,7 @@
     "jest-coverage-badges": "^1.1.2",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
+    "reactotron-plugin-zustand": "^2.0.5",
     "reactotron-react-js": "^3.3.9",
     "tsup": "^7.2.0",
     "tsx": "^3.12.9",

@@ -3,34 +3,30 @@ export function omitFunctionRecursively<T>(input: T, enable: boolean): T {
     return input;
   }
 
-  const inputWithoutFunctions = removeFn(input);
-
-  return removeNulls(inputWithoutFunctions);
+  return removeFunctions(input);
 }
 
-function removeNulls(value: any): any {
+function removeFunctions(value: any): any {
   if (typeof value !== 'object' || value === null) {
     return value;
   }
 
   if (Array.isArray(value)) {
-    return value.map(removeNulls).filter((item) => item !== null);
+    return value
+      .map(removeFunctions)
+      .filter((item) => typeof item !== 'function');
   }
 
   const newObj: any = {};
 
   for (const key in value) {
     if (value.hasOwnProperty(key)) {
-      const cleanedValue = removeNulls(value[key]);
-      if (cleanedValue !== null) {
+      const cleanedValue = removeFunctions(value[key]);
+      if (typeof cleanedValue !== 'function') {
         newObj[key] = cleanedValue;
       }
     }
   }
 
   return newObj;
-}
-
-function removeFn(obj: any) {
-  return JSON.parse(JSON.stringify(obj));
 }
