@@ -15,6 +15,7 @@ npm i -D reactotron-plugin-zustand
 Go to file "Reactotron.config.ts" or your config reactotron from project, is similar to this file:
 
 ```ts
+import Reactotron from 'reactotron-react-js';
 import reactotronZustand from 'reactotron-plugin-zustand';
 
 Reactotron.configure({ name: 'Project name' })
