@@ -33,7 +33,7 @@ Reactotron.configure({ name: 'Project name' })
 | `stores`           | List of stores to be monitored by the Reactotron Zustand plugin. |         |
 | `stores[].name`    | Name of the store to be monitored.                               |         |
 | `stores[].store`   | Reference to the store hook to be monitored.                     |         |
-| `omitFunctionKeys` | Omit state functions (default is false).                         | false   |
+| `omitFunctionKeys` | Omit state functions                                             | false   |
 
 ## Usage
 
