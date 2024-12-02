@@ -1,6 +1,6 @@
 {
   "name": "reactotron-plugin-zustand",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Plugin to monitor states from zustand",
   "main": "./dist/index.js",
   "scripts": {
@@ -54,6 +54,7 @@
     "prettier": "^3.0.3",
     "reactotron-plugin-zustand": "^2.0.5",
     "reactotron-react-js": "^3.3.9",
+    "reactotron-react-native": "^5.1.10",
     "tsup": "^7.2.0",
     "tsx": "^3.12.9",
     "typescript": "^5.2.2",

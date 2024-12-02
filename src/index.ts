@@ -1,40 +1,24 @@
-import { type StoreApi } from 'zustand';
-import type Reactotron from 'reactotron-react-js';
 import deepmerge from 'deepmerge';
 import { omitFunctionRecursively } from './utils';
-
-export type ReactotronCore = ReturnType<typeof Reactotron.configure>;
-
-export interface PluginConfig {
-  stores: Array<{
-    name: string;
-    store: StoreApi<unknown>;
-  }>;
-  omitFunctionKeys?: boolean;
-}
-
-export interface Subscription {
-  name: string;
-  store: StoreApi<unknown>;
-  unsub: ReturnType<StoreApi<unknown>['subscribe']>;
-}
-
-export interface Change {
-  path: string;
-  value: unknown;
-}
+import {
+  type ReactotronCore,
+  type Change,
+  type PluginConfig,
+  type Subscription,
+  type ReactotronCoreNative
+} from './types';
 
 export const WILDCARDS = ['*'];
 
 export default function reactotronPluginZustand({
   stores,
   omitFunctionKeys = false
-}: PluginConfig): Parameters<ReactotronCore['use']>[number] {
-  return (reactotron: ReactotronCore) => {
+}: PluginConfig) {
+  return (reactotron: ReactotronCore | ReactotronCoreNative) => {
     let subscriptions: Subscription[] = [];
 
     return {
-      onCommand: (command) => {
+      onCommand: (command: any) => {
         // Backup state
         if (command?.type === 'state.backup.request') {
           reactotron.send('state.backup.response', {
