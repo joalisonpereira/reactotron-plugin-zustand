@@ -8,11 +8,9 @@ import {
   type ReactotronCoreNative
 } from './types';
 
-export const WILDCARDS = ['*'];
+const WILDCARDS = ['*'];
 
-export type PluginConfig;
-
-export default function reactotronPluginZustand({
+function reactotronPluginZustand({
   stores,
   omitFunctionKeys = false
 }: PluginConfig) {
@@ -102,3 +100,5 @@ export default function reactotronPluginZustand({
     };
   };
 }
+
+export { reactotronPluginZustand as default, WILDCARDS, type PluginConfig };
