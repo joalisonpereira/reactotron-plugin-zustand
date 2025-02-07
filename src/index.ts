@@ -10,6 +10,8 @@ import {
 
 export const WILDCARDS = ['*'];
 
+export type PluginConfig;
+
 export default function reactotronPluginZustand({
   stores,
   omitFunctionKeys = false
