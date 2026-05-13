@@ -7,7 +7,7 @@ export function omitFunctionRecursively<T>(input: T, enable: boolean): T {
 }
 
 function removeFunctions(value: any): any {
-  if (typeof value !== 'object' || value === null) {
+  if (typeof value !== 'object' || value === null || value instanceof Date) {
     return value;
   }
 
